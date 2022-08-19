@@ -8,10 +8,12 @@ import {
   Text,
   TouchableOpacity,
   Pressable,
+  Button,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { FlatList } from 'react-native-web';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { getUsers } from './api/getUsers';
 
 const App = () => {
   const [inputItem, setInputItem] = useState('');
@@ -63,6 +65,7 @@ const App = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>
+        <Button title="GET" onPress={async() => await getUsers()} />
         <Text style={styles.titleText}>
           Login
         </Text>
@@ -152,10 +155,10 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'column'
   },
-  button:{
+  button: {
     color: 'white'
   },
-  flatList:{
+  flatList: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
@@ -165,7 +168,7 @@ const styles = StyleSheet.create({
     padding: 8,
     display: 'flex'
   },
-  flatListItem:{
+  flatListItem: {
     color: 'black'
   }
 });
