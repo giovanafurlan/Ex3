@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { FlatList } from 'react-native-web';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 
 const App = () => {
   const [inputItem, setInputItem] = useState('');
@@ -87,10 +88,13 @@ const App = () => {
             data={data}
             keyExtractor={({ id }) => id}
             renderItem={({ item }) => (
-              <View>
-                <Text>{item.descricao}</Text>
+              <View style={styles.flatList}>
+                <Text>
+                  {item.descricao}
+                </Text>
                 <Pressable
-                  onPress={() => { removeItem(item.id) }}>
+                  onPress={() => { removeItem(item.id) }}
+                  style={styles.button}>
                   <FontAwesome
                     name="trash-o"
                     size={20}
@@ -147,6 +151,22 @@ const styles = StyleSheet.create({
   flex2: {
     display: 'flex',
     flexDirection: 'column'
+  },
+  button:{
+    color: 'white'
+  },
+  flatList:{
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: '#ccc',
+    borderRadius: 8,
+    margin: 8,
+    padding: 8,
+    display: 'flex'
+  },
+  flatListItem:{
+    color: 'black'
   }
 });
 
